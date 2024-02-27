@@ -11,6 +11,7 @@
         <router-link to="/about" active-class="active-link">About</router-link>
       </div>
     </div>
+    
     <router-view v-slot="{ Component }">
       <keep-alive include="home">
         <component :is="Component" />
