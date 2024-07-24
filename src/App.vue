@@ -2,6 +2,7 @@
 
 <template>
   <div class="banner"></div>
+  <div  class="box">box</div>
   <div class="content">
     <div class="tab_box">
       <div class="tab">
@@ -20,17 +21,18 @@
   </div>
 </template>
 <style>
+
+.box{
+  width: 600px;
+  height: 200px;
+  background-color: red;
+  margin-bottom: 200px;
+}
 * {
   margin: 0;
   padding: 0;
 }
 
-body {
-  overflow: hidden;
-}
-#app {
-  overflow: hidden;
-}
 
 /* 隐藏整个页面的滚动条 */
 html {
@@ -78,6 +80,7 @@ body {
         text-align: center;
         line-height: 100px;
         color: black;
+        font-size: 20px;
       }
     }
   }
