@@ -1,9 +1,9 @@
 <script setup></script>
-
 <template>
   <div class="banner"></div>
-  <div  class="box">box</div>
   <div class="content">
+
+    <button @click="test">test</button>
     <div class="tab_box">
       <div class="tab">
         <router-link to="/" active-class="active-link">Home</router-link>
@@ -12,7 +12,6 @@
         <router-link to="/about" active-class="active-link">About</router-link>
       </div>
     </div>
-    
     <router-view v-slot="{ Component }">
       <keep-alive include="home">
         <component :is="Component" />
@@ -20,19 +19,36 @@
     </router-view>
   </div>
 </template>
+
+<script setup>
+import getURL from "@/utils/getURL";
+import { useCounterStore } from "@/stores/useUserInfo";
+import  {showDialog} from 'vant'
+
+import  { getUserAPI, getTest } from '@/apis/getList.js'
+const useCounter = useCounterStore()
+
+const getList = async () => {
+  const res = await getUserAPI({ userid: getURL("userid") });
+  useCounter.setToken(res.headers["x-auth-token"]);
+  if (!useCounter.userToken) {
+    showDialog({
+      message: res.data.msg,
+    }).then(() => {
+      // 网页向小程序 postMessage 消息
+      dd.postMessage({ quit: true });
+    });
+  }
+};
+getList()
+
+// 测试
+const test = async ()=>{
+  await getTest()
+}
+</script>
+
 <style>
-
-.box{
-  width: 600px;
-  height: 200px;
-  background-color: red;
-  margin-bottom: 200px;
-}
-* {
-  margin: 0;
-  padding: 0;
-}
-
 
 /* 隐藏整个页面的滚动条 */
 html {

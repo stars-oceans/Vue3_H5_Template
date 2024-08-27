@@ -6,6 +6,7 @@ import router from './router'
 
 import { Button, Loading, Empty } from 'vant'
 import 'vant/lib/index.css';
+import './style.css'
 
 // 引入 echarts
 import ECharts from 'vue-echarts'

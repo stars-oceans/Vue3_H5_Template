@@ -1,6 +1,8 @@
 <template>
   <div class="about">
+    <div style="font-size: 30px; font-weight: 600;">asdads12313</div>
     <h1 v-for="i in 100">{{ i }}</h1>
+    asdad
   </div>
 </template>
 
